@@ -62,6 +62,7 @@ func SetLink(name string, settings *LinkSettings) error {
 	}
 	args := settings.cmd(name, doinit)
 	c := exec.Command(args[0], args[1:]...)
+	fmt.Printf("CMD: %v\n", cmd)
 	out, err := c.CombinedOutput()
 	if err != nil {
 		return fmt.Errorf("error setting link: %s - %s", string(out), err)
